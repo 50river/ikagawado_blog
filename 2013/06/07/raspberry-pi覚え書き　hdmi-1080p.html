@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Raspberry Pi覚え書き　HDMI 1080p</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">cafe? IKAGAWA DO</a></h1>
+          </div>
+
+          <h2>Raspberry Pi覚え書き　HDMI 1080p</h2>
+<p class="meta">07 Jun 2013</p>
+
+<div class="post">
+どうしても、HDMI接続でモニタ解像度をうまく認識してくれなかったので<br />調べて1080pで出力出来るようにした話<br /><br /><br />まず、<br /><a href="http://elinux.org/RPi_config.txt">http://elinux.org/RPi_config.txt</a><br />で、色々設定をみる。<br /><br />基本的にモニタの設定は<br />/boot/config.txt<br />に書いてある<br /><br />はじめに<br /><br />認識が出来ていないわけだから<br />魔法の呪文<br />hdmi_ignore_edid=0xa5000080<br />と書く<br />これやっちゃうと、自動認識しなくなるわけだから<br />使うモニタ限定した場合に限るんですかね？<br /><br />これ以降基本的に<br />config.txtでコメントアウトしてあるものを<br />適宜外して書き直していく感じ<br /><br /><br /><br />強制的にHDMIで出力するってのを設定<br />hdmi_driver=2<br /><br />つぎモニタはキッチリ表示出来るモニタなので<br /><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;">disable_overscan=1</span></span><br /><br /><br />使っているモニタは1080p60Hzに対応しているので<br />さっき紹介した<br /><a href="http://elinux.org/RPi_config.txt">http://elinux.org/RPi_config.txt</a><br />から対応する設定を探す<br /><br />hdmi_group=1<br />hdmi_mode=16<br /><br />グループ1モード16は1080p 60Hzって設定<br /><br />で、使ってるモニタは<br />スピーカーも付いてるので<br />HDMIで音声信号も送ってねというので<br /><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;">hdmi_drive=2</span></span><br /><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;"><br /></span></span><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;"><br /></span></span><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;">こんな感じで設定ファイルをいじってリブートかければ</span></span><br /><span style="background-color: white; line-height: 17px; white-space: pre;"><span style="font-family: inherit;">1080pで奇麗にキッチリ出せましたという話</span></span>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                KAZUNOBU IKAGAWA<br />
+                cafe? IKAGAWA DO<br />
+                IKAGAWADO@gmail.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/50river">github.com/50river</a><br />
+                <a href="https://www.facebook.com/IKAGAWADO">facebook.com/IKAGAWADO</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>
